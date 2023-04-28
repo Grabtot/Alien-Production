@@ -1,6 +1,6 @@
-using System;
 using AlienProduction.UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MissManager : MonoBehaviour
 {
@@ -8,7 +8,7 @@ public class MissManager : MonoBehaviour
     [SerializeField] private int _maxMissesNumber = 6;
     [SerializeField] private MissViewsContainer _missViewsContainer;
 
-    public event Action NoMoreMisses;
+    public UnityEvent NoMoreMisses;
 
     private int _currentMissesCount = 0;
 
