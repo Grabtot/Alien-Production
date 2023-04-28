@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using DanPie.Framework.AudioManagement;
+﻿using DanPie.Framework.AudioManagement;
 using UnityEngine;
 
 namespace AlienProduction.Tests
@@ -17,13 +16,13 @@ namespace AlienProduction.Tests
 
         protected void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Mouse0) && _missManager.IsHaveAvailableMisses())
+            if (Input.GetKeyDown(KeyCode.Mouse0) && _missManager.IsHaveAvailableMisses())
             {
                 _sourceProvider.GetAudioSourceController()
                     .Play(_shootSoundProvider.GetClipData());
                 _missManager.RegisterMiss();
             }
         }
-        
+
     }
 }

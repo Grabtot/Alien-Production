@@ -1,5 +1,5 @@
-using System;
 using AlienProduction.UI;
+using System;
 using UnityEngine;
 
 public class MissManager : MonoBehaviour
