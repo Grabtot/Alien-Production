@@ -1,5 +1,6 @@
 using DanPie.Framework.AudioManagement;
 using DanPie.Framework.Coroutines;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shotgun : MonoBehaviour
@@ -11,9 +12,12 @@ public class Shotgun : MonoBehaviour
     [SerializeField] private float _maxRange = 100f;
     [SerializeField] private LayerMask _hitLayers;
     [SerializeField] private Material _lineMaterial;
+
     [SerializeField] private AudioSourcesManager _audioSourcesManager;
     [SerializeField] private AudioClipDataProvider _shootSoundProvider;
     [SerializeField] private AudioClipDataProvider _rechargeSoundProvider;
+
+    [SerializeField] private MissManager _missManager;
 
     private Rigidbody _playerRigidbody;
     private LineRenderer _lineRenderer;
@@ -45,7 +49,20 @@ public class Shotgun : MonoBehaviour
         if (Physics.Raycast(_shotPoint.position, direction, out RaycastHit hit, _maxRange, _hitLayers))
         {
             impactPoint = hit.point;
+
+            if (hit.collider.gameObject.TryGetComponent<Renderer>(out var renderer))
+            {
+                renderer.material.color = Color.red;
+                StartCoroutine(CoroutineUtilities.WaitForSeconds(2, () =>
+                renderer.AddComponent<Rigidbody>()));
+            }
+
         }
+        else
+        {
+            _missManager.RegisterMiss();
+        }
+
         DrawLineWithLineRenderer(_shotPoint.position, impactPoint, Color.yellow, .1f);
 
         PlayShootEffects();
