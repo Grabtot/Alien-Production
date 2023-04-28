@@ -1,4 +1,4 @@
-﻿using DanPie.Framework.AudioManagement;
+using DanPie.Framework.AudioManagement;
 using UnityEngine;
 using UnityEngine.Events;
 

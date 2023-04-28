@@ -1,6 +1,6 @@
-﻿using System;
-using DanPie.Framework.Coroutines;
+﻿using DanPie.Framework.Coroutines;
 using DanPie.Framework.Pooling;
+using System;
 using UnityEngine;
 
 namespace DanPie.Framework.AudioManagement
@@ -84,7 +84,7 @@ namespace DanPie.Framework.AudioManagement
                     CoroutineUtilities.WaitForSeconds(clipDuration, Stop));
             }
         }
-        
+
         public void Stop()
         {
             if (!IsBusy)

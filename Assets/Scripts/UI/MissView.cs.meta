@@ -3,7 +3,10 @@ guid: 296a62db129157942876ebccfcbf44a2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _availableMissTexture: {fileID: 21300000, guid: e1563aadeec47594883f15b614c74b28, type: 3}
+  - _unavailableMissTexture: {fileID: 21300000, guid: 04227cd09c417c642b24e6e588874189, type: 3}
+  - _missImage: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
