@@ -1,5 +1,6 @@
-﻿using DanPie.Framework.AudioManagement;
+using DanPie.Framework.AudioManagement;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace AlienProduction.Tests
 {
@@ -7,22 +8,18 @@ namespace AlienProduction.Tests
     {
         [SerializeField] private AudioClipDataProvider _shootSoundProvider;
         [SerializeField] private AudioSourcesManager _sourceProvider;
-        [SerializeField] private MissManager _missManager;
 
-        protected void Awake()
-        {
-            _missManager.NoMoreMisses += () => Debug.Log("NO MORE MISSES!!!");
-        }
+        public UnityEvent Missed;
 
         protected void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && _missManager.IsHaveAvailableMisses())
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 _sourceProvider.GetAudioSourceController()
                     .Play(_shootSoundProvider.GetClipData());
-                _missManager.RegisterMiss();
+
+                Missed?.Invoke();
             }
         }
-
     }
 }

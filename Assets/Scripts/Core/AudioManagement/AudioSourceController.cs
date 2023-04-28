@@ -75,6 +75,7 @@ namespace DanPie.Framework.AudioManagement
             AudioSource.loop = isLooped;
             AudioSource.outputAudioMixerGroup = clipData.MixerGroup;
             AudioSource.clip = clipData.AudioClip;
+            AudioSource.volume = clipData.Volume;
             float clipDuration = clipData.AudioClip.length;
             AudioSource.Play();
             if (!isLooped)
